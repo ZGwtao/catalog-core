@@ -1,6 +1,8 @@
 #!/bin/sh
 
-test -d repos/unikraft || git clone git@github.com:ZGwtao/unikraft.git repos/unikraft
+git submodule update --init --recursive
+
+test -d repos/unikraft || ln -sfn ../../unikraft repos/unikraft
 test -d repos/libs/musl || git clone https://github.com/unikraft/lib-musl repos/libs/musl
 test -d repos/libs/lwip || git clone https://github.com/unikraft/lib-lwip repos/libs/lwip
 test -d repos/libs/libcxx || git clone https://github.com/unikraft/lib-libcxx repos/libs/libcxx
@@ -15,6 +17,3 @@ test -d repos/apps/elfloader || git clone https://github.com/unikraft/app-elfloa
 test -d repos/libs/redis || git clone https://github.com/unikraft/lib-redis repos/libs/redis
 test -d repos/libs/wamr || git clone https://github.com/unikraft/lib-wamr repos/libs/wamr
 test -d repos/libs/sqlite || git clone https://github.com/unikraft/lib-sqlite repos/libs/sqlite
-
-cd repos/unikraft
-git checkout carrels-dev
