@@ -1,6 +1,14 @@
 #!/bin/sh
 
-git submodule update --init --recursive
+# if commented out, we use the lionsos' deps
+# =============================== 
+#git submodule update --init --recursive
+
+test -d ../unikraft || {
+    echo "ERROR: ../unikraft does not exist."
+    echo "Please clone unikraft or initialise deps of LionsOS next to this directory first."
+    exit 1
+}
 
 test -d repos/unikraft || ln -sfn ../../unikraft repos/unikraft
 test -d repos/libs/musl || git clone https://github.com/unikraft/lib-musl repos/libs/musl
