@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(void)
+int uk_app_main(void)
 {
 	puts("Hello from Unikraft!");
 
