@@ -27,7 +27,7 @@ static void print_file_contents(const char *fname)
 	}
 }
 
-int main(int argc, char **argv)
+int uk_app_main(int argc, char **argv)
 {
 	int i;
 
