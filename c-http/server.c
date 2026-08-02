@@ -21,8 +21,8 @@ static const char reply[] = "HTTP/1.1 200 OK\r\n" \
 #define BUFLEN 2048
 static char recvbuf[BUFLEN];
 
-int main(int argc __attribute__((unused)),
-	 char *argv[] __attribute__((unused)))
+int uk_app_main(int argc __attribute__((unused)),
+				char *argv[] __attribute__((unused)))
 {
 	int rc = 0;
 	int srv, client;
