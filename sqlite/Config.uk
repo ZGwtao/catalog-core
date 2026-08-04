@@ -14,7 +14,8 @@ default y
 
 	# Select filesystem core components: vfscore.
 	select LIBVFSCORE
-	select LIBVFSCORE_AUTOMOUNT_UP
+	select LIBVFSCORE_AUTOMOUNT_CI
+	select LIBVFSCORE_AUTOMOUNT_CI_EINITRD
 	select LIBRAMFS
 	select LIBUKCPIO
 
