@@ -11,7 +11,7 @@ test -d ../unikraft || {
 }
 
 test -d repos/unikraft || ln -sfn ../../unikraft repos/unikraft
-test -d repos/libs/musl || git clone https://github.com/unikraft/lib-musl repos/libs/musl
+test -d repos/libs/musl || git clone -b uk-on-mk https://github.com/ZGwtao/lib-musl repos/libs/musl
 test -d repos/libs/lwip || git clone https://github.com/unikraft/lib-lwip repos/libs/lwip
 test -d repos/libs/libcxx || git clone https://github.com/unikraft/lib-libcxx repos/libs/libcxx
 test -d repos/libs/libcxxabi || git clone https://github.com/unikraft/lib-libcxxabi repos/libs/libcxxabi
