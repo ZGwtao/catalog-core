@@ -1,0 +1,8 @@
+# Configure C nginx client with networking, i.e. the use of LWIP.
+
+config APPCNGINXCLIENT
+bool "Configure C nginx client with LWIP"
+default y
+
+	select LIBLWIP
+	select LIBUKNETDEV_EINFO_LIBPARAM
