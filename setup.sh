@@ -25,3 +25,8 @@ test -d repos/apps/elfloader || git clone https://github.com/unikraft/app-elfloa
 test -d repos/libs/redis || git clone https://github.com/unikraft/lib-redis repos/libs/redis
 test -d repos/libs/wamr || git clone https://github.com/unikraft/lib-wamr repos/libs/wamr
 test -d repos/libs/sqlite || git clone https://github.com/unikraft/lib-sqlite repos/libs/sqlite
+test -d repos/libs/tinyalloc || git clone -b staging https://github.com/unikraft/lib-tinyalloc repos/libs/tinyalloc
+
+if ! git -C repos/libs/tinyalloc apply --reverse --check ../../../patches/tinyalloc-headers.patch >/dev/null 2>&1; then
+    git -C repos/libs/tinyalloc apply ../../../patches/tinyalloc-headers.patch
+fi

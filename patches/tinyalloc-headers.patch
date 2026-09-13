@@ -1,0 +1,24 @@
+diff --git a/glue.c b/glue.c
+index 5f94e33..fa9c764 100644
+--- a/glue.c
++++ b/glue.c
+@@ -33,6 +33,7 @@
+ #include <uk/tinyalloc.h>
+ #include <uk/alloc_impl.h>
+ #include <uk/arch/limits.h> /* for __PAGE_SIZE */
++#include <stdint.h>
+ #include <string.h> /* for memset */
+ #include <tinyalloc.h>
+ 
+diff --git a/include/uk/tinyalloc.h b/include/uk/tinyalloc.h
+index 170f444..b090e39 100644
+--- a/include/uk/tinyalloc.h
++++ b/include/uk/tinyalloc.h
+@@ -33,6 +33,7 @@
+ #ifndef __LIBTINYALLOC_H__
+ #define __LIBTINYALLOC_H__
+ 
++#include <stddef.h>
+ #include <uk/alloc.h>
+ 
+ #ifdef __cplusplus

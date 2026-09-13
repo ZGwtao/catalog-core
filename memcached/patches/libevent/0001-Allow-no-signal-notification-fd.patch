@@ -1,0 +1,46 @@
+From: uk-on-mk authors
+Subject: [PATCH] adapt notifications for the Unikraft runtime
+
+Memcached does not require asynchronous Unix signal delivery in the
+unikernel deployment.  Keep the event base usable when neither pipe(2) nor
+AF_UNIX socketpair(2) is implemented. Use eventfd without descriptor flags
+for cross-thread notifications because the Unikraft fd layer applies those
+semantics itself.
+---
+ event.c  | 3 +--
+ signal.c | 7 +++++++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/signal.c b/signal.c
+index 2e8fb67..51e8648 100644
+--- a/signal.c
++++ b/signal.c
+@@ -175,5 +175,12 @@ int
+ evsig_init_(struct event_base *base)
+ {
++		/* Some unikernel targets intentionally provide neither pipe(2)
++		 * nor AF_UNIX. Memcached does not install libevent signal events,
++		 * so lack of a signal notification fd is safe here. */
++		base->sig.ev_signal_pair[0] = -1;
++		base->sig.ev_signal_pair[1] = -1;
++		base->evsigsel = &evsigops;
++		return 0;
+ 	/*
+ 	 * Our signal handler is going to write to one end of the socket
+ 	 * pair to wake up our event loop.  The event loop then scans for
+diff --git a/event.c b/event.c
+index 5f9a915..a7ac58f 100644
+--- a/event.c
++++ b/event.c
+@@ -3648,8 +3648,7 @@ evthread_make_base_notifiable_nolock_(struct event_base *base)
+ #endif
+ 
+ #ifdef EVENT__HAVE_EVENTFD
+-	base->th_notify_fd[0] = evutil_eventfd_(0,
+-	    EVUTIL_EFD_CLOEXEC|EVUTIL_EFD_NONBLOCK);
++	base->th_notify_fd[0] = evutil_eventfd_(0, 0);
+ 	if (base->th_notify_fd[0] >= 0) {
+ 		base->th_notify_fd[1] = -1;
+ 		notify = evthread_notify_base_eventfd;
+-- 
+2.43.0
