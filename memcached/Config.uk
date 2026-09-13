@@ -1,0 +1,30 @@
+config APPMEMCACHED
+	bool "Memcached server"
+	default y
+	select LIBMUSL
+	select LIBLWIP
+	select LWIP_IPV4
+	select LWIP_DHCP
+	select LWIP_SOCKET
+	select LWIP_THREADS
+	select LWIP_UKNETDEV
+	select LWIP_AUTOIFACE
+	select LIBUKNETDEV
+	select LIBUKNETDEV_EINFO_LIBPARAM
+	select LIBUKSCHEDCOOP
+	select LIBPTHREAD_EMBEDDED
+	select LIBPOSIX_PROCESS
+	select LIBPOSIX_USER
+	select LIBPOSIX_SOCKET
+	select LIBPOSIX_EVENT
+	select LIBUKTIME
+	select LIBUKSIGNAL
+
+if APPMEMCACHED
+
+config APPMEMCACHED_THREADS
+	int "Worker threads"
+	range 1 64
+	default 1
+
+endif
