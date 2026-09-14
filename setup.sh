@@ -22,7 +22,7 @@ test -d repos/libs/python3 || git clone https://github.com/unikraft/lib-python3 
 test -d repos/libs/click || git clone https://github.com/unikraft/lib-click.git repos/libs/click
 test -d repos/libs/libelf || git clone https://github.com/unikraft/lib-libelf repos/libs/libelf
 test -d repos/apps/elfloader || git clone https://github.com/unikraft/app-elfloader repos/apps/elfloader
-test -d repos/libs/redis || git clone https://github.com/unikraft/lib-redis repos/libs/redis
+test -d repos/libs/redis || git clone https://github.com/ZGwtao/lib-redis repos/libs/redis
 test -d repos/libs/wamr || git clone https://github.com/unikraft/lib-wamr repos/libs/wamr
 test -d repos/libs/sqlite || git clone https://github.com/unikraft/lib-sqlite repos/libs/sqlite
 test -d repos/libs/tinyalloc || git clone -b staging https://github.com/unikraft/lib-tinyalloc repos/libs/tinyalloc
