@@ -1,0 +1,14 @@
+diff --git a/Makefile.uk b/Makefile.uk
+index 92845f6..e44be99 100644
+--- a/Makefile.uk
++++ b/Makefile.uk
+@@ -76,7 +76,8 @@ LIBSQLITE_CFLAGS-y += $(LIBSQLITE_SUPPRESS_FLAGS-y)
+ ################################################################################
+ # Glue code
+ ################################################################################
+-LIBSQLITE_SRCS-$(CONFIG_LIBSQLITE_MAIN_FUNCTION) += $(LIBSQLITE_BASE)/main.c|unikraft
++LIBSQLITE_MAIN ?= $(LIBSQLITE_BASE)/main.c
++LIBSQLITE_SRCS-$(CONFIG_LIBSQLITE_MAIN_FUNCTION) += $(LIBSQLITE_MAIN)|unikraft
+ 
+ ################################################################################
+ # SQLite sources

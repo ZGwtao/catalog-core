@@ -27,6 +27,14 @@ test -d repos/libs/wamr || git clone https://github.com/unikraft/lib-wamr repos/
 test -d repos/libs/sqlite || git clone https://github.com/unikraft/lib-sqlite repos/libs/sqlite
 test -d repos/libs/tinyalloc || git clone -b staging https://github.com/unikraft/lib-tinyalloc repos/libs/tinyalloc
 
+if ! git -C repos/libs/nginx apply --reverse --check ../../../patches/nginx-main-source.patch >/dev/null 2>&1; then
+    git -C repos/libs/nginx apply ../../../patches/nginx-main-source.patch
+fi
+
+if ! git -C repos/libs/sqlite apply --reverse --check ../../../patches/sqlite-main-source.patch >/dev/null 2>&1; then
+    git -C repos/libs/sqlite apply ../../../patches/sqlite-main-source.patch
+fi
+
 if ! git -C repos/libs/tinyalloc apply --reverse --check ../../../patches/tinyalloc-headers.patch >/dev/null 2>&1; then
     git -C repos/libs/tinyalloc apply ../../../patches/tinyalloc-headers.patch
 fi

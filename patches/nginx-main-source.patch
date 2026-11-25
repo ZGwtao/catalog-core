@@ -1,0 +1,14 @@
+diff --git a/Makefile.uk b/Makefile.uk
+index 29db863..7339b46 100644
+--- a/Makefile.uk
++++ b/Makefile.uk
+@@ -57,7 +57,8 @@ LIBNGINX_SRC = $(LIBNGINX_ORIGIN)/$(LIBNGINX_BASENAME)/src
+ ################################################################################
+ # Sources
+ ################################################################################
+-LIBNGINX_SRCS-$(CONFIG_LIBNGINX_MAIN_FUNCTION) += $(LIBNGINX_BASE)/main.c|unikraft
++LIBNGINX_MAIN ?= $(LIBNGINX_BASE)/main.c
++LIBNGINX_SRCS-$(CONFIG_LIBNGINX_MAIN_FUNCTION) += $(LIBNGINX_MAIN)|unikraft
+ 
+ ################################################################################
+ # Library includes

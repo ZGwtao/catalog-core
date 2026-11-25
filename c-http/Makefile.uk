@@ -1,3 +1,4 @@
 $(eval $(call addlib,appchttp))
 
-APPCHTTP_SRCS-y += $(APPCHTTP_BASE)/server.c
+APPCHTTP_MAIN ?= $(APPCHTTP_BASE)/server.c
+APPCHTTP_SRCS-y += $(APPCHTTP_MAIN)
